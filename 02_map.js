@@ -4,6 +4,7 @@ const data1 = [1, 2, 3, 5, 8, 13];
 
 // 자료구조 -> Map -> 키 => 값 호출한다. 키는 겹쳐서는 안된다(덮어씌워진다)
 // Map -> 입력 받은 것을 -> 변환해서 -> 일괄적으로 새로운 형태의 다른 나열된 형태의 사본을 만든다
+console.log(data1);
 
 const data1Copy = [];
 for (const v of data1) {
