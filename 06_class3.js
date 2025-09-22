@@ -1,62 +1,50 @@
-// 상속(inheritence) -> 상위(포함) => 하위에 영향을 미침
-// class 상속 -> B가 A를 상속한다 -> A에 이미 구현되어 있는 것들을 가져다 쓸 수 있음
-
-class Animal {
-  constructor(name) {
-    this.name = name;
+// 접근자
+// [] -> 키. + = 대입연산자 주입.
+// ?? -> 대입연산자 -> ????
+// accessor / access. / validation.
+// validate. 타당.
+// 이름 name -> 빈 문자열(텍스트) -> let name = "" <= X.
+// 함수. 메서드화를 하면. 무시해버리거나, 에러처리를 해버리거나, ...
+// getter setter
+class Rectangle {
+  // width, height
+  constructor(width, height) {
+    this._width = width; // 가로
+    this._height = height; // 세로
+  }
+  // getter
+  get width() {
+    return this._width;
+  }
+  // setter
+  set width(newWidth) {
+    if (typeof newWidth != "number") {
+      console.log("숫자가 아닌 값을 입력할 수 없습니다!");
+      return;
+    }
+    if (newWidth < 0) {
+      console.log("0보다 작게 입력할 수 없습니다!");
+      return;
+    }
+    this._width = newWidth;
   }
 
-  speak() {
-    console.log(`${this.name}(이)가 소리를 낸다`);
+  get height() {
+    return this._height;
   }
-}
-
-const animal = new Animal("동물");
-animal.speak();
-
-class Dog extends Animal {
-  constructor(name, breed) {
-    // 상속받고자 하는 상위(부모) 클래스의 생성자/대상을 지칭하려면
-    super(name); // Animal.constructor()
-    // Animal.name = name;
-    // -> 별도의 name이 없다면 this.name과 같다
-    this.breed = breed;
+  set height(newHeight) {
+    this._height = newHeight;
   }
-
-  speak() {
-    // 재정의.
-    console.log(`${this.name}(이)가 짖는다`);
-  }
-}
-
-class Cat extends Animal {
-  speak() {
-    console.log(`${this.name}(이)가 야옹거린다`);
-  }
-}
-
-const dog = new Dog("강아지", "푸들");
-dog.speak();
-
-const cat = new Cat("고양이");
-cat.speak();
-
-class Bird extends Animal {
-  speak() {
-    super.speak();
-    console.log(`${this.name}(이)가 짹짹거린다`);
+  get size() {
+    return this._width * this._height;
   }
 }
 
-class Tiger extends Animal {
-  run() {
-    console.log(`${this.name}(이)가 달린다.`);
-  }
-}
+const r = new Rectangle(100, 100);
+r.width = 100; // 함수인데 프로퍼티 값을 다루는 것처럼 취급시킬 수 있다
+r.width = "ff";
+console.log(r.size);
 
-const bird = new Bird("참새");
-bird.speak();
+// static
 
-const tiger = new Tiger("호랑이");
-tiger.speak();
-tiger.run();
+// 예외처리 -> 별도파일.
