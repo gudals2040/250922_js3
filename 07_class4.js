@@ -16,5 +16,6 @@ class Utility {
 // new 생성자를 사용해서 만들어줘야 기본 프로퍼티라도 만들어지는 건데...
 console.log(Utility.setting);
 Utility.helper();
+console.log(Utility);
 // Math.
 // Object.
